@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@layer components {
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-style: normal;
+        font-weight: 700;
+        color: #000112;
+    }
+
+    h1 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    h2 {
+
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    h3 {
+        font-size: 15px;
+        line-height: 19px;
+    }
+
+    h4 {
+        font-size: 12px;
+        line-height: 15px;
+        letter-spacing: 2px;
+        color: #828FA3;
+    }
+
+    h5 {
+        font-size: 12px;
+        line-height: 15px;
+        color: #2B2C37;
+    }
+
+    p {
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 23px;
+        color: #2B2C37;
+    }
+
+    button {
+        transition: all 100ms linear;
+        border-radius: 24px;
+        padding-inline: 2rem;
+        padding-block: 0.4rem;
+        color: white;
+        font-weight: 700;
+        font-size: 13px;
+    }
+
+    button.primary {
+        background: #635FC7;
+        padding-block: 0.5rem;
+        font-weight: 700;
+        line-height: 19px;
+        font-size: 15px;
+    }
+
+    button.primary.little {
+        border-radius: 20px;
+        font-size: 13px;
+        line-height: 23px;
+    }
+
+    button.primary:hover {
+        background: #A8A4FF;
+    }
+
+    button.secondary {
+        background: rgba(99, 95, 199, 0.1);
+        color: #635FC7;
+        line-height: 23px;
+    }
+
+    button.secondary:hover {
+        background: rgba(99, 95, 199, 0.25);
+    }
+
+    button.destructive {
+        background: #EA5555;
+        border-radius: 20px;
+        line-height: 23px;
+    }
+
+    button.destructive:hover {
+        background: #FF9898;
+    }
+}

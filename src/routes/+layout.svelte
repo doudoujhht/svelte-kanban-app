@@ -1,66 +1,53 @@
 <script>
+    import {each} from "svelte/internal";
     import "../app.css"
 
     export let data;
-    let boards = data.boards
+    const boards = data.boards;
+    console.log(boards)
     let actif = boards[0]
-    let classes = " text-xl flex font-bold gap-5 p-4 pl-6 "
 </script>
-<div class="flex">
 
-    <div class="flex w-screen md:w-[40%] flex items-center md:flex-col justify-center text-black h-screen absolute md:static">
-        <div class="w-screen h-screen absolute bg-[#000] opacity-70 md:hidden"></div>
-        <img src="assets/logo-dark.svg" class="hidden" alt="">
-        <div class="w-[80%] mx-auto bg-white dark:bg-darkGrey opacity-100 z-10 rounded-xl ">
-            <h4 class="pl-6 uppercase text-lg py-4">all boards ({boards.length})</h4>
+
+<div>
+    <nav class="pt-5 w-[15%] flex flex-col justify-between">
+        <div>
+            <img src="assets/logo-dark.svg" alt="" class="pl-5">
+            <p class="pl-5 pt-5 pb-3 font-bold text-mediumGray uppercase tracking-widest">all boards</p>
             {#each boards as {name}}
-                {#if actif.name === name}
-                    <div class="{classes} bg-purple w-[90%] rounded-r-3xl">
-                        <img src="assets/icon-board-white.svg" class="w-[24px] h-[24px]" alt="">
-                        <h3 class="text-white text-lg">{name}</h3>
-                    </div>
-                {:else}
-                    <div class="{classes}">
-                        <img src="assets/icon-board.svg" alt="" class="w-[24px] h-[24px]">
-                        <h3 class="text-mediumGray text-lg">{name}</h3>
-                    </div>
-                {/if}
+                <div class="flex items-center gap-4 px-4 py-2.5 mb-1 {name ===actif.name? 'bg-purple w-[80%] rounded-r-3xl':''}">
+                    <img src="assets/{name ===actif.name?'icon-board-white.svg':'icon-board.svg'}" alt="board image"
+                         class="w-[20px] h-[20px] ">
+                    <h3 class="{name === actif.name?'text-white':'text-mediumGray'} font-bold">{name}</h3>
+                </div>
             {/each}
-            <div class="{classes}">
-                <img src="assets/icon-board-purple.svg" alt="" class="w-[24px] h-[24px]">
-                <h3 class="text-purple text-lg">+ Create New Board</h3>
+            <div class="flex items-center gap-4 px-4 py-2.5 mb-0.5 ">
+                <img src="assets/icon-board-purple.svg" alt="board image"
+                     class="w-[20px] h-[20px] ">
+                <h3 class="text-purple font-bold">+ Create New Board</h3>
             </div>
-            <div class="flex w-[80%] mx-auto justify-evenly bg-lightGrey rounded-lg my-4 py-4 bg-veryDarkGrey">
-                <img src="assets/icon-light-theme.svg" alt="">
+        </div>
+
+        <div>
+            <div class="mx-5 bg-lightGrey flex justify-around py-4 rounded-lg">
+                <img src="assets/icon-dark-theme.svg" alt="">
                 <label class="switch">
                     <input type="checkbox" checked>
                     <span class="slider round"></span>
                 </label>
-                <img src="assets/icon-dark-theme.svg" alt="">
+                <img src="assets/icon-light-theme.svg" alt="">
             </div>
         </div>
-    </div>
 
-    <div class="md:[60%]">
-        <nav class="flex w-screen  px-4 py-4 h-[7.5vh] dark:bg-darkGrey">
-            <div class="flex w-2/3 gap-3 items-end ">
-                <img src="assets/logo-mobile.svg" alt="logo mobile">
-                <h2 class="dark:text-white">Platform Launch</h2>
-                <div class="flex items-center h-full">
-                    <img src="assets/icon-chevron-down.svg" alt="arrow down" class="w-[12px] h-[6px]"/>
-                </div>
-            </div>
-            <div class="flex justify-end w-1/3 gap-4 ">
-                <button class="primary little px-4 py-4"><img src="assets/icon-add-task-mobile.svg" alt=""></button>
-                <img src="assets/icon-vertical-ellipsis.svg" alt="">
-            </div>
-        </nav>
-        <slot/>
-    </div>
+    </nav>
 </div>
 
-
 <style>
+    nav {
+        border-right: 1px solid #E4EBFA;
+        height: calc(100vh - 20px);
+    }
+
     .switch {
         position: relative;
         display: inline-block;
@@ -83,7 +70,7 @@
         bottom: 0;
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
         background-color: #ccc;
         -webkit-transition: .4s;
         transition: .4s;

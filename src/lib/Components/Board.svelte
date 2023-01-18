@@ -3,6 +3,7 @@
     import {actif, isLightMode} from "$lib/store.js";
 </script>
 <div class="flex px-6 gap-10 justify-between flex-nowrap pb-14">
+
     {#each $actif.columns as column}
         <Column {column}/>
     {/each}
@@ -25,5 +26,6 @@
         }
     </style>
 {/if}
+
 
 
